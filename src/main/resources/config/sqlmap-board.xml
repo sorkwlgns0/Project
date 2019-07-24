@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="boardDao">
+	<select id="board_list" resultType="boardVO">
+		SELECT * from board where boardno=1
+	</select>
+	<insert id="insert" parameterType="boardVO">
+		INSERT INTO BOARD (num, writer, subject, pass, readcount, regdate, content, boardno, filename,secret,menu)
+		VALUES (BOARD_SEQ.nextval, #{writer}, #{subject}, #{pass}, 0 , SYSDATE, #{content},#{boardno}, #{filename},#{secret},#{menu})
+		<selectKey keyProperty="num" resultType="Integer">
+		SELECT NVL(MAX(num),0) FROM BOARD
+		</selectKey>
+	</insert>
+	<select id="select" parameterType="int" resultType="boardVO">
+		SELECT * FROM BOARD WHERE boardno =#{num} order by regdate desc
+	</select>
+	<select id="readnum" parameterType="int" resultType="boardVO">
+		SELECT * FROM BOARD WHERE num =#{num} order by regdate desc
+	</select>
+	<select id="word" parameterType="String" resultType="shoppingVO">
+		SELECT * FROM menu WHERE name LIKE '%'||#{word}||'%'
+	</select>
+	<select id="menu" resultType="shoppingVO">
+		SELECT * FROM MENU WHERE SEQ=${menu}
+	</select>
+</mapper>

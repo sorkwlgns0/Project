@@ -1,0 +1,97 @@
+package shopping.domain;
+
+import org.apache.ibatis.type.Alias;
+
+@Alias("memberVO")
+public class MemberVO {
+	private int seq;
+	private String id;
+	private String password;
+	private String name;
+	private String address;
+	private int mobile_num;
+	private String email;
+	private boolean agree;
+	private int point;
+	public int getSeq() {
+		return seq;
+	}
+	public void setSeq(int seq) {
+		this.seq = seq;
+	}
+	public int getPoint() {
+		return point;
+	}
+	public void setPoint(int point) {
+		this.point = point;
+	}
+	public boolean isAgree() {
+		return agree;
+	}
+	public String getPasswordConfirm() {
+		return passwordConfirm;
+	}
+	public void setPasswordConfirm(String passwordConfirm) {
+		this.passwordConfirm = passwordConfirm;
+	}
+	public void setAgree(boolean agree) {
+		this.agree = agree;
+	}
+	private int birth;
+	private String passwordConfirm;
+	
+	public MemberVO() {}
+	public MemberVO(int seq, String id, String password, String name, String address, int mobile_num, String email, int birth,int point) {
+		this.seq = seq;
+		this.id = id;
+		this.password = password;
+		this.address = address;
+		this.name = name;
+		this.mobile_num = mobile_num;
+		this.birth = birth;
+		this.email = email;
+		this.point = point;
+	}
+	public String getId() {
+		return id;
+	}
+	public void setId(String id) {
+		this.id = id;
+	}
+	public String getPassword() {
+		return password;
+	}
+	public void setPassword(String password) {
+		this.password = password;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public String getAddress() {
+		return address;
+	}
+	public void setAddress(String address) {
+		this.address = address;
+	}
+	public int getMobile_num() {
+		return mobile_num;
+	}
+	public void setMobile_num(int mobile_num) {
+		this.mobile_num = mobile_num;
+	}
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
+	}
+	public int getBirth() {
+		return birth;
+	}
+	public void setBirth(int birth) {
+		this.birth = birth;
+	}
+}

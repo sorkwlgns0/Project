@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+   xsi:schemaLocation="http://www.springframework.org/schema/beans
+         http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean id="shoppingController" class="shopping.controller.ShoppingController">
+		<property name="shoppingService" ref="shoppingServiceImpl" />
+	</bean>
+	<bean id="regiController" class="shopping.controller.RegisterController">
+		<property name="regiService" ref="regiServiceImpl"/>
+	</bean>	
+	<bean id="loginController" class="shopping.controller.LoginController">
+		<property name="loginService" ref="loginServiceImpl"/>
+	</bean>	
+	<bean id="boardController" class="shopping.controller.BoardController">
+		<property name="boardService" ref="boardServiceImpl"/>
+	</bean>	
+</beans>

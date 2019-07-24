@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="shoppingDao">
+	<select id="list" resultType="shoppingVO">
+		SELECT * FROM menu ORDER BY seq
+	</select>
+	<select id="listMember" resultType="memberVO">
+		SELECT * FROM regi
+		ORDER BY seq
+	</select>
+	<select id="searchMember" parameterType="String" resultType="memberVO">
+		SELECT * FROM books WHERE name=#{keyword}
+	</select>
+	<insert id="insertMember" parameterType="memberVO">
+		INSERT INTO regi 
+		(seq, id, password, name, address, mobile_num, email, birth, point) 
+		VALUES
+		(regi_SEQ.nextval, #{id}, #{password}, #{name}, #{address}, #{mobile_num}, #{email}, #{birth}, #{point})
+		<selectKey keyProperty="seq" resultType="Integer">
+			SELECT NVL(MAX(seq),0) FROM regi
+		</selectKey>
+	</insert>
+	<select id="loginList" parameterType="String" resultType="memberVO">
+		SELECT * FROM REGI WHERE id=#{id}
+	</select>
+	<select id="getId" parameterType="String" resultType="memberVO">
+		SELECT * FROM regi WHERE ID=#{id}
+	</select>
+
+</mapper>
+
+
+
+
