@@ -39,14 +39,8 @@ public class BoardServiceImpl implements BoardService{
 	@Override
 	public List<ShoppingVO> search(String word) {
 		// TODO Auto-generated method stub
-		
+		System.out.println(word+ "");
 		return boardDao.word(word);
-	}
-	@Override
-	public List<ShoppingVO> menu1(int menu) {
-		// TODO Auto-generated method stub
-		System.out.println(menu + "서비스 부분");
-		return boardDao.menu(menu);
 	}
 
 }

@@ -2,7 +2,6 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-
 <mapper namespace="shoppingDao">
 	<select id="list" resultType="shoppingVO">
 		SELECT * FROM menu ORDER BY seq
@@ -18,7 +17,7 @@
 		INSERT INTO regi 
 		(seq, id, password, name, address, mobile_num, email, birth, point) 
 		VALUES
-		(regi_SEQ.nextval, #{id}, #{password}, #{name}, #{address}, #{mobile_num}, #{email}, #{birth}, #{point})
+		(regi_SEQ.nextval, #{id}, #{password}, #{name}, #{address}, #{mobile}, #{email}, #{birth}, #{point})
 		<selectKey keyProperty="seq" resultType="Integer">
 			SELECT NVL(MAX(seq),0) FROM regi
 		</selectKey>
@@ -26,12 +25,19 @@
 	<select id="loginList" parameterType="String" resultType="memberVO">
 		SELECT * FROM REGI WHERE id=#{id}
 	</select>
-	<select id="getId" parameterType="String" resultType="memberVO">
-		SELECT * FROM regi WHERE ID=#{id}
+	<select id="idCheck" parameterType="String" resultType="memberVO">
+	 select id from regi
+	     where id = #{id}
 	</select>
-
+	<select id="searchID" parameterType="String" resultType="memberVO">
+		SELECT * FROM regi WHERE email=#{email}
+	</select>
+	<select id="searchPW" parameterType="String" resultType="memberVO">
+		SELECT * FROM regi WHERE id=#{id}
+	</select>
+	<update id="changePW" parameterType="memberVO">
+		update regi set password = #{password} where id=#{id}
+	</update>
 </mapper>
-
-
 
 

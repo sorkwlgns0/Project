@@ -8,7 +8,9 @@
 <title>Insert title here</title>
 </head>
 <body>
- <a href="<%=request.getContextPath()%>/login/login">로그인</a>
-  <a href="<%=request.getContextPath()%>/main">메인으로 이동</a>
+	<c:forEach var="found" items="${foundID }" varStatus="loop">
+		<c:if test="${found == null }">ddd</c:if>
+		<c:if test="${found != null }">${found }</c:if>
+	</c:forEach>
 </body>
 </html>

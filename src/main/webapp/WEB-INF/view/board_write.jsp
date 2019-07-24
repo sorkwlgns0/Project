@@ -70,11 +70,12 @@ function doOpenCheck(chk){
 function showPopup() { 
 	window.open("<%=request.getContextPath()%>/board_search", "a", "width=600, height=400, left=100, top=50"); 
 	}
-function setChildValue(image, name, price, menu){
+function setChildValue(image, selectname, price){
 	document.getElementById("image").src = "/TeamProject/images/"+image;
-    document.getElementById("name").value = name;
+    document.getElementById("selectname").value = selectname;
+    document.getElementById("selectimage").value = image;
     document.getElementById("price").value = price +"원";
-    document.getElementById("menu").value = menu;
+
     
 
 }
@@ -120,10 +121,11 @@ function setChildValue(image, name, price, menu){
        	<div class="boardno6">
        	<div class="left-box">
        	<img id ="image" alt="img" src="<%=request.getContextPath()%>/images/75x75.gif" width="140" height="170" style="margin-left:5px; margin-top:-20px;">
+		  
        	</div>
        	<div class="right-box">
        	<br>
-       	<input type="text" name="category" id="name" value="" style="margin-left:20px; border: none; background: transparent; font-weight:bold;" readonly/><br>
+       	<input type="text" name="selectname" id="selectname" value="" style="margin-left:20px; border: none; background: transparent; font-weight:bold;" readonly/><br>
 		<input type="text" name="category" id="price" value="" style="margin-left:20px; border: none; background: transparent; font-weight:bold; color:blue" readonly/>
        	<hr width="96%" style="margin-top:0px;">
        	<img src="<%=request.getContextPath()%>/images/btn_prd_select.gif" alt="" class="btn" onclick="showPopup();" style="margin-top:-20px; margin-left:6px; font-weight:bold;"/>
@@ -177,7 +179,7 @@ function setChildValue(image, name, price, menu){
                 <input type="password" placeholder="비밀번호를 입력하세요" name="pass" id="pass" class="form-control"/>
                 <input type="hidden" name="boardno" value="${num}">
                 <input type="hidden" name="writer" value="tnjswlgns">
-                <input type="hidden" name ="menu" id ="menu" value="">   
+                <input type="hidden" name ="selectimage" id ="selectimage" value="">  
                 </td>
             </tr>
             <tr>

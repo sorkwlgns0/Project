@@ -7,8 +7,8 @@
 		SELECT * from board where boardno=1
 	</select>
 	<insert id="insert" parameterType="boardVO">
-		INSERT INTO BOARD (num, writer, subject, pass, readcount, regdate, content, boardno, filename,secret,menu)
-		VALUES (BOARD_SEQ.nextval, #{writer}, #{subject}, #{pass}, 0 , SYSDATE, #{content},#{boardno}, #{filename},#{secret},#{menu})
+		INSERT INTO BOARD (num, writer, subject, pass, readcount, regdate, content, boardno, filename ,secret, selectimage, selectname)
+		VALUES (BOARD_SEQ.nextval, #{writer}, #{subject}, #{pass}, 0 , SYSDATE, #{content},#{boardno}, #{filename},#{secret}, #{selectimage}, #{selectname})
 		<selectKey keyProperty="num" resultType="Integer">
 		SELECT NVL(MAX(num),0) FROM BOARD
 		</selectKey>
@@ -21,8 +21,5 @@
 	</select>
 	<select id="word" parameterType="String" resultType="shoppingVO">
 		SELECT * FROM menu WHERE name LIKE '%'||#{word}||'%'
-	</select>
-	<select id="menu" resultType="shoppingVO">
-		SELECT * FROM MENU WHERE SEQ=${menu}
 	</select>
 </mapper>

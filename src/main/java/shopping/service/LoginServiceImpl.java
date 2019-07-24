@@ -28,4 +28,20 @@ public class LoginServiceImpl implements LoginService{
 		return loginDao.getId(id);
 	}
 
+	@Override
+	public MemberVO searchID(String email) {
+		return loginDao.searchID(email);
+	}
+
+	@Override
+	public MemberVO searchPW(String id) {
+		return loginDao.searchPW(id);
+	}
+
+	@Override
+	public void changePW(MemberVO memberVO) {
+		loginDao.changePW(memberVO);
+		
+	}
+
 }

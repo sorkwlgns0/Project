@@ -7,5 +7,6 @@ import shopping.domain.ShoppingVO;
 public interface ShoppingService {
 	
 	public abstract List<ShoppingVO> list();
+	
 
 }

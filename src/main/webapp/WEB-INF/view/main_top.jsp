@@ -5,7 +5,7 @@
 <%@page import="java.util.List" %>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
+<% String loginID = (String)session.getAttribute("login"); %>
 <!doctype html>
 
 <html>
@@ -32,8 +32,13 @@
  </div>
  	<div class="top_menu right middle">
   <a href="javascript:void(0)"><img src="<%=request.getContextPath()%>/images/top_menu_01.png" onmouseover="this.src='<%=request.getContextPath()%>/images/top_menu_01_02.png';" onmouseout="this.src='<%=request.getContextPath()%>/images/top_menu_01.png';" alt="북마크"/></a>
-  <a href="<c:url value="/login/"/>"><img src="<%=request.getContextPath()%>/images/top_menu_02.png" onmouseover="this.src='<%=request.getContextPath()%>/images/top_menu_02_02.png';" onmouseout="this.src='<%=request.getContextPath()%>/images/top_menu_02.png';" alt="로그인"/></a>
-  <a href="<c:url value="/step1"/>"><img src="<%=request.getContextPath()%>/images/top_menu_03.png" onmouseover="this.src='<%=request.getContextPath()%>/images/top_menu_03_02.png';" onmouseout="this.src='<%=request.getContextPath()%>/images/top_menu_03.png';" alt="회원가입"/></a>
+    <% if(loginID == null) {%>
+  <a href="<%=request.getContextPath()%>/login/login"><img src="<%=request.getContextPath()%>/images/top_menu_02.png" onmouseover="this.src='<%=request.getContextPath()%>/images/top_menu_02_02.png';" onmouseout="this.src='<%=request.getContextPath()%>/images/top_menu_02.png';" alt="로그인"/></a>
+  <% } else { %>
+  <!-- 마우스오버 이미지 넣기 -->
+  <a href="<%=request.getContextPath()%>/login/logout"><img src="<%=request.getContextPath()%>/images/logged_02.png" onmouseover="this.src='<%=request.getContextPath()%>/images/logged_02_02.png';" onmouseout="this.src='<%=request.getContextPath()%>/images/logged_02.png';" alt="로그아웃"/></a>
+ 	<%} %>
+  <a href="<%=request.getContextPath()%>/register/step1"><img src="<%=request.getContextPath()%>/images/top_menu_03.png" onmouseover="this.src='<%=request.getContextPath()%>/images/top_menu_03_02.png';" onmouseout="this.src='<%=request.getContextPath()%>/images/top_menu_03.png';" alt="회원가입"/></a>
   <a href="javascript:void(0)"><img src="<%=request.getContextPath()%>/images/top_menu_07.png" onmouseover="this.src='<%=request.getContextPath()%>/images/top_menu_07_02.png';" onmouseout="this.src='<%=request.getContextPath()%>/images/top_menu_07.png';" alt="마이페이지"/></a>
   <a href="<%=request.getContextPath()%>/board_list/${1}"><img src="<%=request.getContextPath()%>/images/top_menu_08.png" onmouseover="this.src='<%=request.getContextPath()%>/images/top_menu_08_02.png';" onmouseout="this.src='<%=request.getContextPath()%>/images/top_menu_08.png';" alt="커뮤니티"/></a>
   <a href="javascript:void(0)"><img src="<%=request.getContextPath()%>/images/logged_06.png"></a>
@@ -51,11 +56,6 @@
  </div>
 </div>
 </div>
-
-
-   
-
- 
 
 </body>
 

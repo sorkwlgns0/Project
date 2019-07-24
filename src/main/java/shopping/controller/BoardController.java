@@ -16,7 +16,7 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import shopping.domain.BoardVO;
 import shopping.service.BoardService;
-import shopping.service.ShoppingService;
+
 
 
 @Controller
@@ -31,12 +31,11 @@ public class BoardController {
 		model.addAttribute("send" , boardService.read(num));
 		return "/board_write";
 	}
-	@RequestMapping(value="/board_list/{num}", method=RequestMethod.GET)
+	@RequestMapping(value="/board_list/{num}")
 	public String list(Model model, @PathVariable int num) {
 		int cnt = boardService.read(num).size();
 		model.addAttribute("boardVO" , boardService.read(num));
 		model.addAttribute("cnt" , cnt);
-
 		return "/board_list";
 	}
 	@RequestMapping(value="/board_write/{num}" , method=RequestMethod.GET)
@@ -56,17 +55,21 @@ public class BoardController {
 		if(mf.isEmpty()==false) {
 			mf.transferTo(uploadFile);
 		}
-//		System.out.println(path);
-//		System.out.println(uploadFile);
-//		System.out.println(boardVO.getNum());
-//		System.out.println(boardVO.getWriter());
-//		System.out.println(boardVO.getSubject());
-//		System.out.println(boardVO.getPass());
-//		System.out.println(boardVO.getReadcount());
-//		System.out.println(boardVO.getRegdate());
-//		System.out.println(boardVO.getBoardno());
-//		System.out.println(boardVO.getContent());
-//		System.out.println(boardVO.getFilename());
+		System.out.println(path);
+		System.out.println(uploadFile);
+		
+		System.out.println(boardVO.getNum());
+		System.out.println(boardVO.getWriter());
+		System.out.println(boardVO.getSubject());
+		System.out.println(boardVO.getPass());
+		System.out.println(boardVO.getReadcount());
+		System.out.println(boardVO.getRegdate());
+		System.out.println(boardVO.getBoardno());
+		System.out.println(boardVO.getContent());
+		System.out.println(boardVO.getFilename());
+		System.out.println(boardVO.getSelectimage());
+		System.out.println(boardVO.getSelectname());
+		System.out.println(boardVO.getSecret());
 		boardService.write(boardVO);
 		return "redirect:/board_list/{num}";
 	}
@@ -83,16 +86,15 @@ public class BoardController {
 	}
 	@RequestMapping(value="/board_search", method=RequestMethod.POST)
 	public String PostSearch(Model model, @RequestParam(value = "keyword") String keyword){
+		System.out.println(keyword);
 		model.addAttribute("keyword" , boardService.search(keyword));
 		return "/board_search_list";
 	}
 	
 	@RequestMapping(value="/test")
-	public String test(Model model, @RequestParam(value = "keyword") String keyword) {
-		System.out.println(keyword);
+	public String test(Model model) {
 		return "/test";
-	}
-	@RequestMapping(value="/test1")
+	}	@RequestMapping(value="/test1")
 	public String test1(Model model) {
 		return "/test1";
 	}

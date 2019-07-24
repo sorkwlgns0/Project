@@ -36,11 +36,6 @@ public class BoardDaoMybatis implements BoardDao{
 		// TODO Auto-generated method stub
 		return sqlSessionTemplate.selectList("word", word);
 	}
-	@Override
-	public List<ShoppingVO> menu(int menu) {
-		// TODO Auto-generated method stub
-		return sqlSessionTemplate.selectList("menu", menu);
-	}
 
 
 }

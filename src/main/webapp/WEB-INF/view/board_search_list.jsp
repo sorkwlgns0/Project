@@ -30,9 +30,9 @@ function page_href() {
 	location.href = "<%=request.getContextPath()%>/board_list/${num}";
 	};
 	
-	function sendChildValue(image, name, price, menu) {
+	function sendChildValue(image, selectname, price) {
 
-	opener.setChildValue(image, name, price, menu);
+	opener.setChildValue(image, selectname, price);
 
 	window.close();    //자식창 닫기
 
@@ -86,7 +86,7 @@ function page_href() {
       	</th>
         <th><br>이름 : ${menu.name}<br>
         가격 : ${menu.price}원</th>
-        <th style="text-align:center;"><br><br><a href="javascript:sendChildValue('${menu.image}','${menu.name}','${menu.price}','${menu.seq}')"><img src="<%=request.getContextPath()%>/images/btn_board_select.gif"></a>
+        <th style="text-align:center;"><br><br><a href="javascript:sendChildValue('${menu.image}','${menu.name}','${menu.price}')"><img src="<%=request.getContextPath()%>/images/btn_board_select.gif"></a>
         </th>
       </tr>
     </tbody>

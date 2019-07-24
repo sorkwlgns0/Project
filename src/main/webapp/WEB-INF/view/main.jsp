@@ -97,6 +97,7 @@ img {
 </style>
 </head>
 <body>
+
  <%@ include file ="/WEB-INF/view/main_top.jsp" %>
  
 <!-- 내용 -->

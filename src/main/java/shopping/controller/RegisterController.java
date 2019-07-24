@@ -1,11 +1,14 @@
 package shopping.controller;
 
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import shopping.domain.MemberVO;
 import shopping.service.RegiService;
@@ -18,32 +21,46 @@ public class RegisterController {
 	public void setRegiService(RegiService regiService) {
 		this.regiService = regiService;
 	}
-	@RequestMapping(value="/step1", method=RequestMethod.GET)
+	@RequestMapping(value="/idCheck", method=RequestMethod.POST)
+		@ResponseBody
+	public int postIdCheck(HttpServletRequest req) {
+
+		System.out.println("아이디 체크 실행");
+		String id = req.getParameter("id");
+		MemberVO idCheck = regiService.idCheck(id);
+		int result = 0;
+		if(idCheck != null) {
+			result = 1;
+		}
+		return result;
+	}
+
+	@RequestMapping(value="/register/step1", method=RequestMethod.GET)
 	public String handleStep1() {
-		return "/step1";
+		return "/register/step1";
 	}
-	@RequestMapping(value="/step1", method=RequestMethod.POST)
+	@RequestMapping(value="/register/step1", method=RequestMethod.POST)
 	public String handleStep2() {
-		return "/step1";
+		return "/register/step1";
 	}
-	@RequestMapping(value="/step2", method = RequestMethod.GET)
+	@RequestMapping(value="/register/step2", method = RequestMethod.GET)
 	public String step2(MemberVO memberVO,Model model) {
-		return "/regiSuc";
+		return "/register/regiSuc";
 	}
-	@RequestMapping(value="/step2", method = RequestMethod.POST)
+	@RequestMapping(value="/register/step2", method = RequestMethod.POST)
 	public String handleStep2(MemberVO memberVO,
 			@RequestParam(value="agree", defaultValue="false")Boolean agree,
 	Model model){
 		if(!agree) {
-			return "/step1";
+			return "/register/step1";
 		}
 		System.out.println("컨트롤러 실행");
 		regiService.insertMember(memberVO);
-		return "/regiSuc";
+		return "/register/regiSuc";
 	}
-	@RequestMapping(value="/regiSuc", method = RequestMethod.GET)
+	@RequestMapping(value="register/regiSuc", method = RequestMethod.GET)
 	public String regiSuc() {
-		return "/regiSuc";
+		return "/register/regiSuc";
 	}
 	/*@RequestMapping(value="/register/step3", method=RequestMethod.POST)
 	public String handleStep3(HttpServletRequest request) {

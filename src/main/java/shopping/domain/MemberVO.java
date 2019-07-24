@@ -9,7 +9,7 @@ public class MemberVO {
 	private String password;
 	private String name;
 	private String address;
-	private int mobile_num;
+	private int mobile;
 	private String email;
 	private boolean agree;
 	private int point;
@@ -41,13 +41,13 @@ public class MemberVO {
 	private String passwordConfirm;
 	
 	public MemberVO() {}
-	public MemberVO(int seq, String id, String password, String name, String address, int mobile_num, String email, int birth,int point) {
+	public MemberVO(int seq, String id, String password, String name, String address, int mobile, String email, int birth,int point) {
 		this.seq = seq;
 		this.id = id;
 		this.password = password;
 		this.address = address;
 		this.name = name;
-		this.mobile_num = mobile_num;
+		this.mobile = mobile;
 		this.birth = birth;
 		this.email = email;
 		this.point = point;
@@ -76,11 +76,11 @@ public class MemberVO {
 	public void setAddress(String address) {
 		this.address = address;
 	}
-	public int getMobile_num() {
-		return mobile_num;
+	public int getMobile() {
+		return mobile;
 	}
-	public void setMobile_num(int mobile_num) {
-		this.mobile_num = mobile_num;
+	public void setMobile_num(int mobile) {
+		this.mobile = mobile;
 	}
 	public String getEmail() {
 		return email;

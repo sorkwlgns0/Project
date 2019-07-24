@@ -27,6 +27,11 @@ public class RegiServiceImpl implements RegiService{
 		return memberDao.list();
 	}
 
+	@Override
+	public MemberVO idCheck(String id) {
+		return memberDao.idCheck(id);
+	}
+
 
 
 }

@@ -154,7 +154,15 @@ margin-top:30px;
     <tbody>
       <tr>
       	<td>${nowNum-i+1}</td>
-      	<td></td>
+        <c:if test="${num == 1 || num ==2 || num ==3 || num ==4 || num == 5 || num == 7 }">
+        <td>　</td>
+        </c:if>
+        <c:if test="${num == 6 }">
+        <td>
+        <img src="<%=request.getContextPath()%>/images/menuimage/${board.selectimage}" height="50" width="50">
+       	${board.selectname}
+        </td>
+        </c:if>
         <td><a href="<%=request.getContextPath()%>/board_read/${num}/${board.num}">${board.subject}</a>
         <c:if test="${board.secret ==1 }"><img src="<%=request.getContextPath()%>/images/icon_lock.gif"></c:if>
         </td>

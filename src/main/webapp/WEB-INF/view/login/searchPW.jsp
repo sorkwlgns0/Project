@@ -9,19 +9,19 @@
 <title>Insert title here</title>
 </head>
 <body>
-<form action="<c:url value="/login/login"/>" method="post">
+<form action="<c:url value="/login/foundPW"/>" method="post">
 	<table>
 		<tr>
 			<td>아이디 : </td>
 			<td><input type="text" name="id"/></td>
 		</tr>
 		<tr>
-			<td>비밀번호 : </td>
-			<td><input type="password" name="password"/></td>
+			<td>생년월일(8자리 ex(19880301)) : </td>
+			<td><input type="text" name="birth"/></td>
 		</tr>
 	</table>
-	<input type="submit" value="로그인">
-	<a href="<%=request.getContextPath()%>/register/step1"> 회원가입 </a><a href="<%=request.getContextPath()%>/login/searchID"> 아이디찾기 </a><a href="<c:url value="/login/searchPW"/>"> 비밀번호찾기 </a>
+	<input type="submit" value="비밀번호 찾기">
+	<a href="<%=request.getContextPath()%>/main">메인으로 </a><a href="<%=request.getContextPath()%>/login/searchID"> 아이디 찾기 </a>
 </form>
 
 </body>

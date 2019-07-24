@@ -16,11 +16,11 @@ public class BoardVO {
 	private int boardno;
 	private String filename;
 	private int secret;
-	private int menu;
-
+	private String selectimage;
+	private String selectname;
 
 	public BoardVO() {}
-	public BoardVO(int num, String writer, String subject, String pass, int readcount, Timestamp regdate, String content, int boardno, String filename, int secret, int menu) {
+	public BoardVO(int num, String writer, String subject, String pass, int readcount, Timestamp regdate, String content, int boardno, String filename, int secret, String selectimage, String selectname) {
 		this.num=num;
 		this.writer = writer;
 		this.subject = subject;
@@ -31,13 +31,21 @@ public class BoardVO {
 		this.boardno = boardno;
 		this.secret = secret;
 		this.filename = filename;
-		this.menu = menu;
+		this.selectimage = selectimage;
+		this.selectname = selectname;
 	}
-	public int getMenu() {
-		return menu;
+
+	public String getSelectimage() {
+		return selectimage;
 	}
-	public void setMenu(int menu) {
-		this.menu = menu;
+	public void setSelectimage(String selectimage) {
+		this.selectimage = selectimage;
+	}
+	public String getSelectname() {
+		return selectname;
+	}
+	public void setSelectname(String selectname) {
+		this.selectname = selectname;
 	}
 	public int getSecret() {
 		return secret;

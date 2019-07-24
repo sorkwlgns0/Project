@@ -18,7 +18,21 @@ public class LoginDaoMybatis implements LoginDao{
 		}
 		public MemberVO getId(String id) {
 			System.out.println("여긴 베티스"+ id);
-			MemberVO vo = (MemberVO) sqlSessionTemplate.selectOne("getId",id);
+			MemberVO vo = (MemberVO) sqlSessionTemplate.selectOne("loginList",id);
 			return vo;
+		}
+		@Override
+		public MemberVO searchID(String email) {
+			MemberVO vo = (MemberVO)sqlSessionTemplate.selectOne("searchID", email);
+			return vo;
+		}
+		@Override
+		public MemberVO searchPW(String id) {
+			MemberVO vo = (MemberVO)sqlSessionTemplate.selectOne("searchPW", id);
+			return vo;
+		}
+		@Override
+		public void changePW(MemberVO memberVO) {
+			sqlSessionTemplate.update("changePW", memberVO);
 		}
 }
