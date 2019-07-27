@@ -17,4 +17,7 @@
 	<bean id="boardController" class="shopping.controller.BoardController">
 		<property name="boardService" ref="boardServiceImpl"/>
 	</bean>	
+	<bean id="commentController" class="shopping.controller.CommentController">
+		<property name="commentService" ref="commentServiceImpl"/>
+	</bean>	
 </beans>

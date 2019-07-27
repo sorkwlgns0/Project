@@ -34,6 +34,7 @@
          <list>
             <value>classpath:config/sqlmap-shopping.xml</value>
             <value>classpath:config/sqlmap-board.xml</value>
+            <value>classpath:config/sqlmap-comment.xml</value>
          </list>
       </property>
    </bean>
@@ -71,10 +72,19 @@
    <bean id="boardDao" class="shopping.domain.BoardDaoMybatis">
       <constructor-arg ref="sqlSessionTemplate"/>
    </bean>
-		<bean id="boardervice" class="shopping.service.BoardServiceImpl">
+	<bean id="boardService" class="shopping.service.BoardServiceImpl">
 		<property name="boardDao" ref="boardDao"/>
 	</bean>
 	<bean id ="boardServiceImpl" class="shopping.service.BoardServiceImpl">
 		<property name="boardDao" ref="boardDao" />
+	</bean>
+   <bean id="commentDao" class="shopping.dao.CommentDaoMybatis">
+      <constructor-arg ref="sqlSessionTemplate"/>
+   </bean>
+   	<bean id="commentService" class="shopping.service.CommentServiceImpl">
+		<property name="commentDao" ref="commentDao"/>
+	</bean>
+	<bean id ="commentServiceImpl" class="shopping.service.CommentServiceImpl">
+		<property name="commentDao" ref="commentDao" />
 	</bean>
 </beans>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper 
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+ 
+<mapper namespace="CommentDao">
+     
+    <select id="commentList" parameterType="java.lang.Integer" resultType="CommentVO">
+        SELECT *
+        FROM REPLY
+        WHERE 1=1
+        AND bno = #{bno}
+    </select>
+    <insert id="commentInsert" parameterType="CommentVO">
+        INSERT INTO REPLY (CNO, BNO, CONTENT, WRITER, REGDATE) VALUES (REPLY_SEQ.nextval,#{bno},#{content},#{writer},SYSDATE) 
+    </insert>
+    <update id="commentUpdate" parameterType="CommentVO">
+        UPDATE REPLY SET CONTENT = #{content} WHERE CNO = #{cno}
+    </update>
+    <delete id="commentDelete" parameterType="int">
+        DELETE FROM REPLY WHERE CNO = #{cno}
+    </delete>
+</mapper>

@@ -15,7 +15,7 @@
 	</select>
 	<insert id="insertMember" parameterType="memberVO">
 		INSERT INTO regi 
-		(seq, id, password, name, address, mobile_num, email, birth, point) 
+		(seq, id, password, name, address, mobile, email, birth, point) 
 		VALUES
 		(regi_SEQ.nextval, #{id}, #{password}, #{name}, #{address}, #{mobile}, #{email}, #{birth}, #{point})
 		<selectKey keyProperty="seq" resultType="Integer">
@@ -39,5 +39,3 @@
 		update regi set password = #{password} where id=#{id}
 	</update>
 </mapper>
-
-

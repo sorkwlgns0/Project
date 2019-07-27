@@ -19,6 +19,9 @@
 <!-- Latest compiled and minified JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
+
+<script src="https://cdn.ckeditor.com/4.12.1/standard/ckeditor.js"></script>
+
 <style>
   .bin{
 margin-top:30px;
@@ -75,10 +78,8 @@ function setChildValue(image, selectname, price){
     document.getElementById("selectname").value = selectname;
     document.getElementById("selectimage").value = image;
     document.getElementById("price").value = price +"원";
-
-    
-
 }
+
 </script>
 <body>
  <%@ include file ="/WEB-INF/view/main_top.jsp" %>
@@ -168,6 +169,9 @@ function setChildValue(image, selectname, price){
             <tr>
                 <th>내용: </th>
                 <td><textarea cols="30" rows="20" placeholder="내용을 입력하세요. " name="content" id="content" class="form-control"></textarea></td>
+
+            	
+
             </tr>
             <tr>
                 <th>첨부파일: </th>
@@ -179,7 +183,8 @@ function setChildValue(image, selectname, price){
                 <input type="password" placeholder="비밀번호를 입력하세요" name="pass" id="pass" class="form-control"/>
                 <input type="hidden" name="boardno" value="${num}">
                 <input type="hidden" name="writer" value="tnjswlgns">
-                <input type="hidden" name ="selectimage" id ="selectimage" value="">  
+                <input type="hidden" name ="selectimage" id ="selectimage" value="">
+                <input type="hidden" name="selectname" id="selectname" value="">  
                 </td>
             </tr>
             <tr>
@@ -216,5 +221,8 @@ function setChildValue(image, selectname, price){
    </c:choose>
 
 </body>
+<script>
+CKEDITOR.replace( 'content' );
 
+</script>
 </html>

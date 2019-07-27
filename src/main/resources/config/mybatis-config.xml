@@ -12,5 +12,6 @@
 	 	<typeAlias alias="shoppingVO" type="shopping.domain.ShoppingVO"/>
 	 	<typeAlias alias="memberVO" type="shopping.domain.MemberVO"/>
 	 	<typeAlias alias="boardVO" type="shopping.domain.BoardVO"/>
+	 	<typeAlias alias="commentVO" type="shopping.domain.CommentVO"/>
 	 </typeAliases>
 </configuration>

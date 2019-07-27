@@ -5,15 +5,17 @@ import java.io.IOException;
 
 
 
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
-
 import shopping.domain.BoardVO;
 import shopping.service.BoardService;
 
@@ -22,7 +24,7 @@ import shopping.service.BoardService;
 @Controller
 public class BoardController {
 	private BoardService boardService;
-	
+
 	public void setBoardService(BoardService boardService) {
 		this.boardService = boardService;
 	}
@@ -55,21 +57,18 @@ public class BoardController {
 		if(mf.isEmpty()==false) {
 			mf.transferTo(uploadFile);
 		}
-		System.out.println(path);
-		System.out.println(uploadFile);
-		
-		System.out.println(boardVO.getNum());
-		System.out.println(boardVO.getWriter());
-		System.out.println(boardVO.getSubject());
-		System.out.println(boardVO.getPass());
-		System.out.println(boardVO.getReadcount());
-		System.out.println(boardVO.getRegdate());
-		System.out.println(boardVO.getBoardno());
-		System.out.println(boardVO.getContent());
-		System.out.println(boardVO.getFilename());
-		System.out.println(boardVO.getSelectimage());
-		System.out.println(boardVO.getSelectname());
-		System.out.println(boardVO.getSecret());
+//		System.out.println(boardVO.getNum());
+//		System.out.println(boardVO.getWriter());
+//		System.out.println(boardVO.getSubject());
+//		System.out.println(boardVO.getPass());
+//		System.out.println(boardVO.getReadcount());
+//		System.out.println(boardVO.getRegdate());
+//		System.out.println(boardVO.getContent());
+//		System.out.println(boardVO.getBoardno());
+//		System.out.println(boardVO.getFilename());
+//		System.out.println(boardVO.getSecret());
+//		System.out.println(boardVO.getSelectimage());
+//		System.out.println(boardVO.getSelectname());
 		boardService.write(boardVO);
 		return "redirect:/board_list/{num}";
 	}
@@ -90,12 +89,14 @@ public class BoardController {
 		model.addAttribute("keyword" , boardService.search(keyword));
 		return "/board_search_list";
 	}
-	
-	@RequestMapping(value="/test")
-	public String test(Model model) {
-		return "/test";
-	}	@RequestMapping(value="/test1")
-	public String test1(Model model) {
-		return "/test1";
-	}
+	 @RequestMapping(value = "/test")
+	 String test() throws Exception {
+		    return "/test";
+		}
+	 
 }
+//	@RequestMapping(value="/test1")
+//	public String test1(Model model) {
+//		return "/test1";
+//	}
+

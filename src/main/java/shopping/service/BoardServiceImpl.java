@@ -1,9 +1,7 @@
 package shopping.service;
 
 import java.util.List;
-
 import org.springframework.stereotype.Service;
-
 import shopping.domain.BoardDao;
 import shopping.domain.BoardVO;
 import shopping.domain.ShoppingVO;
@@ -42,5 +40,4 @@ public class BoardServiceImpl implements BoardService{
 		System.out.println(word+ "");
 		return boardDao.word(word);
 	}
-
 }

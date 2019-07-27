@@ -1,7 +1,6 @@
 package shopping.service;
 
 import java.util.List;
-
 import shopping.domain.BoardVO;
 import shopping.domain.ShoppingVO;
 

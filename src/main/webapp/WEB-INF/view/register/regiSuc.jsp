@@ -7,6 +7,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
+
 <title><spring:message code="member.register"/></title>
 </head>
 <body>
