@@ -2,6 +2,9 @@ package shopping.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -11,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import shopping.domain.CommentVO;
+import shopping.domain.MemberVO;
 import shopping.service.CommentService;
 
 @Controller
@@ -31,13 +35,14 @@ public class CommentController {
 
 	@RequestMapping(value="/comment/insert")
 	@ResponseBody
-	private int mCommentServiceInsert(@RequestParam int bno, @RequestParam String content) throws Exception {
-
+	private int mCommentServiceInsert(@RequestParam int bno, @RequestParam String content, HttpSession session) throws Exception {
+		String id = (String) session.getAttribute("login");
 		CommentVO comment = new CommentVO();
+
 		comment.setBno(bno);
 		comment.setContent(content);
 		// 임시 ID
-		comment.setWriter("test");
+		comment.setWriter(id);
 		
 		return commentService.commentInsertService(comment);
 	}

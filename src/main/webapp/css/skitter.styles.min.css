@@ -564,7 +564,6 @@
 .skitter-clean .prev_button, .skitter-clean .next_button, .skitter-clean .play_pause_button,
 	.skitter-clean .focus_button {
 	display: block;
-	background: url('../images/sprite-clean.png') no-repeat
 }
 
 .skitter-clean .prev_button {

@@ -7,9 +7,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <!-- Skitter JS -->
-  <script type="text/javascript" language="javascript" src="js/jquery-2.1.1.min.js"></script>
-  <script type="text/javascript" language="javascript" src="js/jquery.easing.1.3.js"></script>
-  <script type="text/javascript" language="javascript" src="js/jquery.skitter.min.js"></script>
+  <script type="text/javascript"  src="js/jquery-2.1.1.min.js"></script>
+  <script type="text/javascript"  src="js/jquery.easing.1.3.js"></script>
+  <script type="text/javascript"  src="js/jquery.skitter.min.js"></script>
 
   <!-- Skitter Styles -->
   <link href="css/skitter.styles.min.css" type="text/css" media="all" rel="stylesheet" />
@@ -99,7 +99,8 @@ img {
 <body>
 
  <%@ include file ="/WEB-INF/view/main_top.jsp" %>
- 
+
+
 <!-- 내용 -->
      <div class="content" id="content">
      <div class="slideshow-container">

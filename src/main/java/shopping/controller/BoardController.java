@@ -3,8 +3,9 @@ package shopping.controller;
 import java.io.File;
 import java.io.IOException;
 
-
-
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -34,8 +35,9 @@ public class BoardController {
 		return "/board_write";
 	}
 	@RequestMapping(value="/board_list/{num}")
-	public String list(Model model, @PathVariable int num) {
+	public String list(Model model, @PathVariable int num, HttpSession session, HttpServletRequest request, HttpServletResponse response) {
 		int cnt = boardService.read(num).size();
+		session.getAttribute("loginID");
 		model.addAttribute("boardVO" , boardService.read(num));
 		model.addAttribute("cnt" , cnt);
 		return "/board_list";
@@ -93,7 +95,6 @@ public class BoardController {
 	 String test() throws Exception {
 		    return "/test";
 		}
-	 
 }
 //	@RequestMapping(value="/test1")
 //	public String test1(Model model) {

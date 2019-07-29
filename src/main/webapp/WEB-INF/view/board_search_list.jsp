@@ -29,13 +29,10 @@ text-align:center;
 function page_href() {
 	location.href = "<%=request.getContextPath()%>/board_list/${num}";
 	};
-	
-	function sendChildValue(image, selectname, price) {
 
+function sendChildValue(image, selectname, price){
 	opener.setChildValue(image, selectname, price);
-
 	window.close();    //자식창 닫기
-
 	};
 </script>
 

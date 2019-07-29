@@ -1,45 +1,106 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
+
 <head>
-  <title>WEB1 - HTML</title>
-  <meta charset="utf-8">
 </head>
 <body>
-  <h1><a href="index.html">WEB</a></h1>
-  <ol>
-    <li><a href="1.html">HTML</a></li>
-    <li><a href="2.html">CSS</a></li>
-    <li><a href="3.html">JavaScript</a></li>
-  </ol>
-  <h2>HTML</h2>
-  <p><a href="https://www.w3.org/TR/html5/" target="_blank" title="html5 speicification">Hypertext Markup Language (HTML)</a> is the standard markup language for <strong>creating <u>web</u> pages</strong> and web applications.Web browsers receive HTML documents from a web server or from local storage and render them into multimedia web pages. HTML describes the structure of a web page semantically and originally included cues for the appearance of the document.
-  <img src="coding.jpg" width="100%">
-  </p><p style="margin-top:45px;">HTML elements are the building blocks of HTML pages. With HTML constructs, images and other objects, such as interactive forms, may be embedded into the rendered page. It provides a means to create structured documents by denoting structural semantics for text such as headings, paragraphs, lists, links, quotes and other items. HTML elements are delineated by tags, written using angle brackets.
-  </p>
-  <p>
-    <div id="disqus_thread"></div>
+            <tr>
+            	<th>비밀글 여부</th>
+            	<td>
+				<div class="form-check-inline">
+  					<label class="form-check-label">
+    					<input type="radio" class="form-check-input"  id="a" name="secret" value="0">공개글
+  					</label>
+				</div>
+				<div class="form-check-inline">
+  					<label class="form-check-label">
+    					<input type="radio" class="form-check-input"  id="b" name="secret" value="1" checked>비밀글
+  					</label>
+				</div>
+            	</td>
+            </tr>
 <script>
+function selectDelRow() {
 
-/**
-*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
-*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
-/*
-var disqus_config = function () {
-this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
-this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
-};
-*/
-(function() { // DON'T EDIT BELOW THIS LINE
-var d = document, s = d.createElement('script');
-s.src = 'https://web1-2.disqus.com/embed.js';
-s.setAttribute('data-timestamp', +new Date());
-(d.head || d.body).appendChild(s);
-})();
+	var chk = document.getElementsByName("del_unit[]"); // 체크박스객체를 담는다
+
+	var len = chk.length;    //체크박스의 전체 개수
+
+	var checkRow = '';      //체크된 체크박스의 value를 담기위한 변수
+
+	var checkCnt = 0;        //체크된 체크박스의 개수
+
+	var checkLast = '';      //체크된 체크박스 중 마지막 체크박스의 인덱스를 담기위한 변수
+
+	var rowid = '';             //체크된 체크박스의 모든 value 값을 담는다
+
+	var cnt = 0;                 
+
+
+
+	for(var i=0; i<len; i++){
+
+	if(chk[i].checked == true){
+
+	checkCnt++;        //체크된 체크박스의 개수
+
+	checkLast = i;     //체크된 체크박스의 인덱스
+
+	}
+
+	} 
+
+
+
+	for(var i=0; i<len; i++){
+
+	if(chk[i].checked == true){  //체크가 되어있는 값 구분
+
+	checkRow = chk[i].value;
+
+	            	
+
+	if(checkCnt == 1){                            //체크된 체크박스의 개수가 한 개 일때,
+
+	rowid += "'"+checkRow+"'";        //'value'의 형태 (뒤에 ,(콤마)가 붙지않게)
+
+	}else{                                            //체크된 체크박스의 개수가 여러 개 일때,
+
+	if(i == checkLast){                     //체크된 체크박스 중 마지막 체크박스일 때,
+
+	rowid += "'"+checkRow+"'";  //'value'의 형태 (뒤에 ,(콤마)가 붙지않게)
+
+	}else{
+
+	rowid += "'"+checkRow+"',";	 //'value',의 형태 (뒤에 ,(콤마)가 붙게)         			
+
+	}
+
+						
+
+	}
+
+	cnt++;
+
+	checkRow = '';    //checkRow초기화.
+
+	}
+
+	  }
+
+
+
+	alert(rowid);    //'value1', 'value2', 'value3' 의 형태로 출력된다.
+
+	}
+
+
 </script>
-<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 
-  </p>
+
 </body>
 </html>
+
+

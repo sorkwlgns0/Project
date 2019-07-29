@@ -15,13 +15,10 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <!-- Optional theme -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">
- 
 <!-- Latest compiled and minified JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
-
 <script src="https://cdn.ckeditor.com/4.12.1/standard/ckeditor.js"></script>
-
+<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
 <style>
   .bin{
 margin-top:30px;
@@ -66,7 +63,7 @@ function doOpenCheck(chk){
     var obj = document.getElementsByName("secret");
     for(var i=0; i<obj.length; i++){
         if(obj[i] != chk){
-            obj[i].checked = false;
+            obj[i].checked = false;   
         }
     }
 }
@@ -79,7 +76,6 @@ function setChildValue(image, selectname, price){
     document.getElementById("selectimage").value = image;
     document.getElementById("price").value = price +"원";
 }
-
 </script>
 <body>
  <%@ include file ="/WEB-INF/view/main_top.jsp" %>
@@ -169,35 +165,34 @@ function setChildValue(image, selectname, price){
             <tr>
                 <th>내용: </th>
                 <td><textarea cols="30" rows="20" placeholder="내용을 입력하세요. " name="content" id="content" class="form-control"></textarea></td>
-
-            	
-
             </tr>
             <tr>
                 <th>첨부파일: </th>
                 <td><input type="file" placeholder="파일을 선택하세요. " name="image" id="filename" class="form-control-file border"/></td>
             </tr>
-            <tr>
+				<tr id ="aaa">
                 <th>비밀번호: </th>
                 <td>
                 <input type="password" placeholder="비밀번호를 입력하세요" name="pass" id="pass" class="form-control"/>
+                
                 <input type="hidden" name="boardno" value="${num}">
-                <input type="hidden" name="writer" value="tnjswlgns">
+                <input type="hidden" name="writer" value="${login}">
                 <input type="hidden" name ="selectimage" id ="selectimage" value="">
                 <input type="hidden" name="selectname" id="selectname" value="">  
                 </td>
             </tr>
+
             <tr>
             	<th>비밀글 여부</th>
             	<td>
 				<div class="form-check-inline">
   					<label class="form-check-label">
-    					<input type="checkbox" class="form-check-input" name="secret" value="0" onclick="doOpenCheck(this);">공개글
+    					<input type="radio" class="form-check-input"  id="check" name="secret" value="0" onchange="setDisplay()">공개글
   					</label>
 				</div>
 				<div class="form-check-inline">
   					<label class="form-check-label">
-    					<input type="checkbox" class="form-check-input" name="secret" value="1" onclick="doOpenCheck(this);" checked>비밀글
+    					<input type="radio" class="form-check-input"  id="check1" name="secret" value="1" onchange="setDisplay()" checked>비밀글
   					</label>
 				</div>
             	</td>
@@ -221,8 +216,14 @@ function setChildValue(image, selectname, price){
    </c:choose>
 
 </body>
-<script>
+<script type="text/javascript"> 
 CKEDITOR.replace( 'content' );
-
-</script>
+function setDisplay(){
+    if($('input:radio[id=check]').is(':checked')){
+        $('#aaa').hide();
+    }else{
+        $('#aaa').show();
+    }
+}
+</script> 
 </html>

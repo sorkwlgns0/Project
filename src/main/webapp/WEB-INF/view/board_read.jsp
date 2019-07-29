@@ -118,9 +118,7 @@ margin-bottom:40px;}
 
 
 <hr class="w3-border-grey" style="margin-top:30px;width:74%">
-
 <div class="container">
-
     <table class="table table-bordered">
 	<tbody>
 	<tr>
@@ -164,6 +162,7 @@ margin-bottom:40px;}
     </div>
 <jsp:include page="/WEB-INF/view/commentS.jsp">
     <jsp:param name="bno" value="${boardVO.num}"/>
+    <jsp:param name="login" value="${login}"/>
 </jsp:include>
 
 
@@ -193,9 +192,6 @@ function myFunction() {
     navbar.classList.remove("sticky");
   }
 }
-
-
-
 function page_href() {
 	location.href = "<%=request.getContextPath()%>/board_list/${num}";
 	}

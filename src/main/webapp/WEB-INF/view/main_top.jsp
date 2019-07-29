@@ -19,7 +19,6 @@
 </head>
 
 <body>
-
 <!--  탑 메뉴-->
 <div class="header">
 <img src="<%=request.getContextPath()%>/images/top_image.png">

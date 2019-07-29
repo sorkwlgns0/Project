@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page session="true" %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -163,8 +165,21 @@ margin-top:30px;
        	${board.selectname}
         </td>
         </c:if>
-        <td><a href="<%=request.getContextPath()%>/board_read/${num}/${board.num}">${board.subject}</a>
-        <c:if test="${board.secret ==1 }"><img src="<%=request.getContextPath()%>/images/icon_lock.gif"></c:if>
+        <td>
+        <c:if test="${board.secret == 1}">
+        <c:set var="login" value="${login}" />
+        <c:if test="${login == board.writer}">
+        <a href="<%=request.getContextPath()%>/board_read/${num}/${board.num}"><span style="color:red">[본인비밀글]${board.subject}</span></a>
+        <img src="<%=request.getContextPath()%>/images/icon_lock.gif">
+        </c:if>
+        <c:if test="${login != board.writer}">
+        <span style="color:blue">[다른 사람의 비밀글]</span>
+        <img src="<%=request.getContextPath()%>/images/icon_lock.gif">
+        </c:if>
+       </c:if>
+        <c:if test="${board.secret == 0 }">
+         <a href="<%=request.getContextPath()%>/board_read/${num}/${board.num}"><span style="color:blue">[공개글]${board.subject}</span></a>
+        </c:if>
         </td>
         <td>${board.writer}</td>
         <td>${board.regdate}</td>
@@ -172,34 +187,22 @@ margin-top:30px;
     </tbody>
     </c:forEach>
   </table>
- <a href="<%=request.getContextPath()%>/board_write/${num}"><img src="<%=request.getContextPath()%>/images/btn_write.png" align="right" style="margin-right:50px"></a>
+	<a href="javascript:btn_write()"><img src="<%=request.getContextPath()%>/images/btn_write.png" align="right" style="margin-right:50px"></a>
 </div>
 
 <!-- footer -->
 <div class="footer"><img src="<%=request.getContextPath()%>/images/footer.jpg"></div>
 </body>
 <script>
-$(document).ready(function() {
-    $('.box_skitter_large').skitter({
-      theme: 'clean',
-      numbers_align: 'center',
-      progressbar: true, 
-      dots: true, 
-      preview: true
-    });
-  });
-
-window.onscroll = function() {myFunction()};
-
-var navbar = document.getElementById("navbar");
-var sticky = navbar.offsetTop;
-
-function myFunction() {
-  if (window.pageYOffset >= sticky) {
-    navbar.classList.add("sticky")
-  } else {
-    navbar.classList.remove("sticky");
-  }
+function btn_write() {
+	var login = "<%=(String)session.getAttribute("login")%>"
+	if( login == "null"){ 
+		alert("로그인을 해주세요.");
+		location.href = "<%=request.getContextPath()%>/login/login";
+	}else{
+		location.href = "<%=request.getContextPath()%>/board_write/${num}";
+	}
 }
+
 </script>
 </html>
