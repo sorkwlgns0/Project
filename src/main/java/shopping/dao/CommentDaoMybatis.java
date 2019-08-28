@@ -26,13 +26,11 @@ public class CommentDaoMybatis implements CommentDao {
 		// TODO Auto-generated method stub
 		return sqlSessionTemplate.insert("commentInsert", comment);
 	}
-
 	@Override
 	public int commentUpdate(CommentVO comment) {
 		// TODO Auto-generated method stub
 		return sqlSessionTemplate.update("commentUpdate", comment);
 	}
-
 	@Override
 	public int commentDelete(int cno) {
 		// TODO Auto-generated method stub
