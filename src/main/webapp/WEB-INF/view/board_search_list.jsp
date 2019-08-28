@@ -79,7 +79,7 @@ function sendChildValue(image, selectname, price){
  <tbody>
       <tr>
       	<th style="text-align:center;">
-      	<c:if test="${menu.image != null }"><img src="/TeamProject/${menu.image }" width="100" height="100"/></c:if>
+      	<c:if test="${menu.image != null }"><img src="/TeamProject/images/menuimage/${menu.image }" width="100" height="100"/></c:if>
       	</th>
         <th><br>이름 : ${menu.name}<br>
         가격 : ${menu.price}원</th>

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -31,19 +32,27 @@ margin-top:30px;
 <table border="0"> 
 <c:set var="i" value="0" /> 
 <c:set var="j" value="5" /> 
-<c:forEach var="item" items="${shoppingList }" varStatus="loop" end="9"> 
+<c:forEach var="sale" items="${saleList }" varStatus="loop" end="9"> 
 <c:if test="${i%j == 0 }"> 
 <tr> 
 </c:if> 
 <td>
 	<div class="wrap effect8">
-		<img src="images/${item.image}" width="100%">
+		<a href="<c:url value="/menu/read/${sale.seq}"/>"><img src="images/menuimage/${sale.image}" width="100%"></a>
+		<c:choose>
+		<c:when test="${sale.buys > 10 }">
+		<img src="images/best_icon.png" >
+		</c:when>
+		</c:choose>
 		<img src="images/sale_icon.png" ><br>
 		<div class="name">
-		${item.name}</div>
-		<div class="price">
-		${item.price}원
+		<a href="<c:url value="/menu/read/${sale.seq}"/>">${sale.name}</a></div>
+		<div class="price" style="display:inline; font-style:italic; text-decoration: line-through; ">
+		${sale.price}원
 		</div>
+		<!-- 백분율 계산후 소수점 삭제 -->
+		　<fmt:parseNumber var="test" value="${sale.price - ((sale.price * sale.sale)/100)}"/>
+		${test}원
 	</div>
 &nbsp;&nbsp;&nbsp;&nbsp;
 </td> 

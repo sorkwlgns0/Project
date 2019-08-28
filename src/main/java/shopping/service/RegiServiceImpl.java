@@ -32,6 +32,20 @@ public class RegiServiceImpl implements RegiService{
 		return memberDao.idCheck(id);
 	}
 
+	public void updateMember(MemberVO memberVO) {
+		memberDao.updateMember(memberVO);
+		
+	}
+	
+	public MemberVO read(int seq) {
+		return memberDao.select(seq);
+	}
+	
+	public int deleteMem(MemberVO memberVO) {
+		return memberDao.deleteMem(memberVO);
+	}
+
+
 
 
 }

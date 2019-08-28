@@ -22,4 +22,14 @@
 	<select id="word" parameterType="String" resultType="shoppingVO">
 		SELECT * FROM menu WHERE name LIKE '%'||#{word}||'%'
 	</select>
+	<select id="VIP" parameterType="String" resultType="memberVO">
+		SELECT howmuch FROM regi where id=#{id}
+	</select>
+	<update id="update" parameterType="boardVO">
+		UPDATE BOARD SET CONTENT = #{content}
+		WHERE num=#{num}
+	</update>
+	<delete id="delete" parameterType="boardVO">
+		DELETE FROM BOARD WHERE NUM = #{num}
+	</delete>
 </mapper>

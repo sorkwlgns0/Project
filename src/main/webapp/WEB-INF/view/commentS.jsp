@@ -34,7 +34,7 @@ function commentList(){
         	var login = "<%=(String)session.getAttribute("login")%>"
             var a =''; 
             $.each(data, function(key, value){ 
-            	console.log(login);
+            	
                 a += '<div class="commentArea" style="border-bottom:1px solid darkgray; margin-bottom: 15px;">';
                 a += '<div class="commentInfo'+value.cno+'" style="color:#adb5bd;">'+'작성자 : '+value.writer;
                 if(value.writer==login){

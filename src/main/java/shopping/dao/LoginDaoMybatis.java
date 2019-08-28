@@ -17,7 +17,6 @@ public class LoginDaoMybatis implements LoginDao{
 			return sqlSessionTemplate.selectList("loginList");
 		}
 		public MemberVO getId(String id) {
-			System.out.println("여긴 베티스"+ id);
 			MemberVO vo = (MemberVO) sqlSessionTemplate.selectOne("loginList",id);
 			return vo;
 		}

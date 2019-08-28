@@ -76,6 +76,7 @@ function setChildValue(image, selectname, price){
     document.getElementById("selectimage").value = image;
     document.getElementById("price").value = price +"원";
 }
+
 </script>
 <body>
  <%@ include file ="/WEB-INF/view/main_top.jsp" %>
@@ -112,7 +113,7 @@ function setChildValue(image, selectname, price){
    <c:choose>
        <c:when test="${num == 1 || num ==2 || num ==3 || num ==4 || num == 5 || num == 6 || num == 7 }">
 <div class="container">
-    <form action="<c:url value="/board_write/${num}" />" method="POST" enctype="multipart/form-data">
+    <form name="form" id="form" action="<c:url value="/board_write/${num}" />" method="POST" enctype="multipart/form-data">
  	   <c:choose>
        <c:when test="${num == 6}">
        	<div class="boardno6">
@@ -164,7 +165,7 @@ function setChildValue(image, selectname, price){
             </tr>
             <tr>
                 <th>내용: </th>
-                <td><textarea cols="30" rows="20" placeholder="내용을 입력하세요. " name="content" id="content" class="form-control"></textarea></td>
+                <td><textarea class="ckeditor" cols="30" rows="20" placeholder="내용을 입력하세요. " name="content" id="content" class="form-control"></textarea></td>
             </tr>
             <tr>
                 <th>첨부파일: </th>
@@ -181,7 +182,6 @@ function setChildValue(image, selectname, price){
                 <input type="hidden" name="selectname" id="selectname" value="">  
                 </td>
             </tr>
-
             <tr>
             	<th>비밀글 여부</th>
             	<td>
@@ -200,7 +200,7 @@ function setChildValue(image, selectname, price){
             <tr>
                 <td colspan="2">
                 	<input  TYPE="IMAGE" src="<%=request.getContextPath()%>/images/btn_cancel.gif" class="pull-right" onclick="deleteCheck(); return false">
-                	<input  TYPE="IMAGE" src="<%=request.getContextPath()%>/images/btn_register.gif" name="Submit" value="Submit" class="pull-right">
+                	<input  TYPE="IMAGE" src="<%=request.getContextPath()%>/images/btn_register.gif" onclick="write_go(); return false" class="pull-right">
                     <input  TYPE="IMAGE" src="<%=request.getContextPath()%>/images/btn_list.gif" class="pull-left" onclick="page_href(); return false">
                 </td>
             </tr>
@@ -208,19 +208,47 @@ function setChildValue(image, selectname, price){
 	</table>
     </form>
 </div>
-
        </c:when>
        <c:otherwise>
            a, b, c 가 아닌 다른거근영...
        </c:otherwise>
    </c:choose>
-
 </body>
 <script type="text/javascript"> 
-CKEDITOR.replace( 'content' );
+function write_go(){
+	var ckeditor = CKEDITOR.instances['content']; 
+	 var radio = document.getElementsByName("secret");
+	 
+     //라디오 버튼이 체크되었나 확인하기 위한 변수
+
+     for(var i = 0; i<radio.length; i++){
+         //만약 라디오 버튼이 체크가 되어있다면 true
+         if(radio[i].checked==true){
+             //라디오 버튼 값
+             if(radio[i].value == 1){
+            		if(document.form.pass.value==""){
+            			alert("비밀번호를 입력해 주세요.");
+            			document.form.pass.focus();
+            			return;
+            		}
+             }
+         }
+     }
+	if (ckeditor.getData()=="")
+	{
+	 alert('내용을 입력 하세요');
+	 ckeditor.focus();
+	 return;
+	}
+	else {
+	 document.in_form.submit();
+	}
+}
 function setDisplay(){
     if($('input:radio[id=check]').is(':checked')){
-        $('#aaa').hide();
+    	$('#aaa').css("display", "none");
+    	$('#aaa').hide();
+    	$("#pass").val('');
     }else{
         $('#aaa').show();
     }

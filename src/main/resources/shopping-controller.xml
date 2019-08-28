@@ -20,4 +20,7 @@
 	<bean id="commentController" class="shopping.controller.CommentController">
 		<property name="commentService" ref="commentServiceImpl"/>
 	</bean>	
+	<bean id="menuController" class="shopping.controller.menuController">
+        <property name="menuService" ref="menuServiceImpl"/>
+    </bean>
 </beans>

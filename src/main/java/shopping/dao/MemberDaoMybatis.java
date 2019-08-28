@@ -13,9 +13,7 @@ public class MemberDaoMybatis implements MemberDao {
 		this.sqlSessionTemplate = sqlSessionTemplate;
 	}
 	public void insertMember(MemberVO memberVO) {
-		System.out.println("sql 실행");
 		sqlSessionTemplate.insert("insertMember", memberVO);
-		
 	}
 
 	public List<MemberVO> list() {
@@ -23,7 +21,18 @@ public class MemberDaoMybatis implements MemberDao {
 	}
 	@Override
 	public MemberVO idCheck(String id) {
+		System.out.println("여긴 바티스" + id);
 		return sqlSessionTemplate.selectOne("idCheck", id);
 	}
-
+	public void updateMember(MemberVO memberVO) {
+		sqlSessionTemplate.update("updateMember", memberVO);
+	}
+	public MemberVO select(int seq) {
+		MemberVO vo = (MemberVO) sqlSessionTemplate.selectOne("select", seq);
+		return vo;
+	}
+	
+	public int deleteMem(MemberVO memberVO) {
+		return sqlSessionTemplate.delete("deleteMem", memberVO);
+	}
 }

@@ -29,11 +29,25 @@ public class BoardDaoMybatis implements BoardDao{
 	public BoardVO read(int readnum) {
 		BoardVO vo=(BoardVO) sqlSessionTemplate.selectOne("readnum", readnum);
 		return vo;
-		
 	}
 	@Override
 	public List<ShoppingVO> word(String word) {
 		// TODO Auto-generated method stub
 		return sqlSessionTemplate.selectList("word", word);
+	}
+	@Override
+	public MemberVO list(String id) {
+		MemberVO vo = (MemberVO) sqlSessionTemplate.selectOne("VIP", id);
+		return vo;
+	}
+	@Override
+	public int update(BoardVO boardVO) {
+		// TODO Auto-generated method stub
+		return sqlSessionTemplate.update("update", boardVO);
+	}
+	@Override
+	public int delete(BoardVO boardVO) {
+		// TODO Auto-generated method stub
+		return sqlSessionTemplate.delete("delete", boardVO);
 	}
 }

@@ -7,22 +7,53 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<link href="<%=request.getContextPath()%>/css/main.css" type="text/css" rel="stylesheet" />
+<link href="<%=request.getContextPath()%>/css/top.css" type="text/css" rel="stylesheet" />
+<link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.7.0/css/all.css' integrity='sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ' crossorigin='anonymous'>
 </head>
+<style>
+.mypageImage{
+text-align: center;
+}
+.joincontent{
+text-align: center;
+padding:10px;
+width:20%;
+margin-left:770px;
+margin-top:20px;
+background:#FAFAFA;
+
+}
+</style>
 <body>
-<form action="<c:url value="/login/foundPW"/>" method="post">
-	<table>
+<div class="mypageImage">
+<div style="font-size:13px; padding:10px; font-weight:bold; margin-top:50px;" >
+비밀번호 찾기
+</div>
+<div style="font-size:13px; padding:10px;">
+<div class="joincontent" style="font-size:13px; padding:10px;">
+<form action="<c:url value="/login/searchID"/>" method="post">
+	<table class="table table-bordered">
 		<tr>
-			<td>아이디 : </td>
-			<td><input type="text" name="id"/></td>
+
+			<th><i class='fas fa-user-circle' style='font-size:14px; color:red;' ></i> 아이디 : </th>
+			<td><input type="text" name="id" style="float:left; color:red;"/></td>
 		</tr>
 		<tr>
-			<td>생년월일(8자리 ex(19880301)) : </td>
-			<td><input type="text" name="birth"/></td>
+			<th><i class='fas fa-birthday-cake' style='font-size:14px; color:red;'></i> 생년월일(8자리) : </th>
+			<td><input type="text" name="birth" style="float:left;"/></td>
 		</tr>
 	</table>
-	<input type="submit" value="비밀번호 찾기">
-	<a href="<%=request.getContextPath()%>/main">메인으로 </a><a href="<%=request.getContextPath()%>/login/searchID"> 아이디 찾기 </a>
+	<input  TYPE="IMAGE" src="<%=request.getContextPath()%>/images/btn_submit.gif" name="Submit" value="Submit"  align="right" style="margin-top:20px;">
 </form>
-
+</div>
+</div>
+</div>
 </body>
 </html>

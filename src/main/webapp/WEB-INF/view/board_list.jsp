@@ -76,7 +76,7 @@ margin-top:30px;
          <a href="<c:url value="/board_list/${2}" />"><img src="<%=request.getContextPath()%>/images/qna2.png" onmouseover="this.src='<%=request.getContextPath()%>/images/qna02.png';" onmouseout="this.src='<%=request.getContextPath()%>/images/qna2.png';" alt="마이페이지"/></a>
        	 <a href="<c:url value="/board_list/${3}" />"><img src="<%=request.getContextPath()%>/images/qna3.png" onmouseover="this.src='<%=request.getContextPath()%>/images/qna03.png';" onmouseout="this.src='<%=request.getContextPath()%>/images/qna3.png';" alt="마이페이지"/></a>
        	 <a href="<c:url value="/board_list/${4}" />"><img src="<%=request.getContextPath()%>/images/qna4.png" onmouseover="this.src='<%=request.getContextPath()%>/images/qna04.png';" onmouseout="this.src='<%=request.getContextPath()%>/images/qna4.png';" alt="마이페이지"/></a>
-         <a href="<c:url value="/board_list/${5}" />"><img src="<%=request.getContextPath()%>/images/qna7.png" onmouseover="this.src='<%=request.getContextPath()%>/images/qna07.png';" onmouseout="this.src='<%=request.getContextPath()%>/images/qna7.png';" alt="마이페이지"/></a>
+         <a href="javascript:btn_vip()"><img src="<%=request.getContextPath()%>/images/qna7.png" onmouseover="this.src='<%=request.getContextPath()%>/images/qna07.png';" onmouseout="this.src='<%=request.getContextPath()%>/images/qna7.png';" alt="마이페이지"/></a>
          <a href="<c:url value="/board_list/${6}" />"><img src="<%=request.getContextPath()%>/images/qna5.png" onmouseover="this.src='<%=request.getContextPath()%>/images/qna05.png';" onmouseout="this.src='<%=request.getContextPath()%>/images/qna5.png';" alt="마이페이지"/></a>
          <a href="<c:url value="/board_list/${7}" />"><img src="<%=request.getContextPath()%>/images/qna6.png" onmouseover="this.src='<%=request.getContextPath()%>/images/qna06.png';" onmouseout="this.src='<%=request.getContextPath()%>/images/qna6.png';" alt="마이페이지"/></a>
        </c:when>
@@ -85,7 +85,7 @@ margin-top:30px;
        	 <a href="<c:url value="/board_list/${2}" />"><img src="<%=request.getContextPath()%>/images/qna02.png" onmouseover="this.src='<%=request.getContextPath()%>/images/qna02.png';" onmouseout="this.src='<%=request.getContextPath()%>/images/qna02.png';" alt="마이페이지"/></a>
        	 <a href="<c:url value="/board_list/${3}" />"><img src="<%=request.getContextPath()%>/images/qna3.png" onmouseover="this.src='<%=request.getContextPath()%>/images/qna03.png';" onmouseout="this.src='<%=request.getContextPath()%>/images/qna3.png';" alt="마이페이지"/></a>
        	 <a href="<c:url value="/board_list/${4}" />"><img src="<%=request.getContextPath()%>/images/qna4.png" onmouseover="this.src='<%=request.getContextPath()%>/images/qna04.png';" onmouseout="this.src='<%=request.getContextPath()%>/images/qna4.png';" alt="마이페이지"/></a>
-         <a href="<c:url value="/board_list/${5}" />"><img src="<%=request.getContextPath()%>/images/qna7.png" onmouseover="this.src='<%=request.getContextPath()%>/images/qna07.png';" onmouseout="this.src='<%=request.getContextPath()%>/images/qna7.png';" alt="마이페이지"/></a>
+         <a href="javascript:btn_vip()"><img src="<%=request.getContextPath()%>/images/qna7.png" onmouseover="this.src='<%=request.getContextPath()%>/images/qna07.png';" onmouseout="this.src='<%=request.getContextPath()%>/images/qna7.png';" alt="마이페이지"/></a>
          <a href="<c:url value="/board_list/${6}" />"><img src="<%=request.getContextPath()%>/images/qna5.png" onmouseover="this.src='<%=request.getContextPath()%>/images/qna05.png';" onmouseout="this.src='<%=request.getContextPath()%>/images/qna5.png';" alt="마이페이지"/></a>
          <a href="<c:url value="/board_list/${7}" />"><img src="<%=request.getContextPath()%>/images/qna6.png" onmouseover="this.src='<%=request.getContextPath()%>/images/qna06.png';" onmouseout="this.src='<%=request.getContextPath()%>/images/qna6.png';" alt="마이페이지"/></a>
          </c:when>
@@ -94,7 +94,7 @@ margin-top:30px;
        	 <a href="<c:url value="/board_list/${2}" />"><img src="<%=request.getContextPath()%>/images/qna2.png" onmouseover="this.src='<%=request.getContextPath()%>/images/qna02.png';" onmouseout="this.src='<%=request.getContextPath()%>/images/qna2.png';" alt="마이페이지"/></a>
        	 <a href="<c:url value="/board_list/${3}" />"><img src="<%=request.getContextPath()%>/images/qna03.png" onmouseover="this.src='<%=request.getContextPath()%>/images/qna03.png';" onmouseout="this.src='<%=request.getContextPath()%>/images/qna03.png';" alt="마이페이지"/></a>
        	 <a href="<c:url value="/board_list/${4}" />"><img src="<%=request.getContextPath()%>/images/qna4.png" onmouseover="this.src='<%=request.getContextPath()%>/images/qna04.png';" onmouseout="this.src='<%=request.getContextPath()%>/images/qna4.png';" alt="마이페이지"/></a>
-         <a href="<c:url value="/board_list/${5}" />"><img src="<%=request.getContextPath()%>/images/qna7.png" onmouseover="this.src='<%=request.getContextPath()%>/images/qna07.png';" onmouseout="this.src='<%=request.getContextPath()%>/images/qna7.png';" alt="마이페이지"/></a>
+         <a href="javascript:btn_vip()"><img src="<%=request.getContextPath()%>/images/qna7.png" onmouseover="this.src='<%=request.getContextPath()%>/images/qna07.png';" onmouseout="this.src='<%=request.getContextPath()%>/images/qna7.png';" alt="마이페이지"/></a>
          <a href="<c:url value="/board_list/${6}" />"><img src="<%=request.getContextPath()%>/images/qna5.png" onmouseover="this.src='<%=request.getContextPath()%>/images/qna05.png';" onmouseout="this.src='<%=request.getContextPath()%>/images/qna5.png';" alt="마이페이지"/></a>
          <a href="<c:url value="/board_list/${7}" />"><img src="<%=request.getContextPath()%>/images/qna6.png" onmouseover="this.src='<%=request.getContextPath()%>/images/qna06.png';" onmouseout="this.src='<%=request.getContextPath()%>/images/qna6.png';" alt="마이페이지"/></a>
          </c:when>
@@ -103,7 +103,7 @@ margin-top:30px;
        	 <a href="<c:url value="/board_list/${2}" />"><img src="<%=request.getContextPath()%>/images/qna2.png" onmouseover="this.src='<%=request.getContextPath()%>/images/qna02.png';" onmouseout="this.src='<%=request.getContextPath()%>/images/qna2.png';" alt="마이페이지"/></a>
        	 <a href="<c:url value="/board_list/${3}" />"><img src="<%=request.getContextPath()%>/images/qna3.png" onmouseover="this.src='<%=request.getContextPath()%>/images/qna03.png';" onmouseout="this.src='<%=request.getContextPath()%>/images/qna3.png';" alt="마이페이지"/></a>
        	 <a href="<c:url value="/board_list/${4}" />"><img src="<%=request.getContextPath()%>/images/qna04.png" onmouseover="this.src='<%=request.getContextPath()%>/images/qna04.png';" onmouseout="this.src='<%=request.getContextPath()%>/images/qna04.png';" alt="마이페이지"/></a>
-         <a href="<c:url value="/board_list/${5}" />"><img src="<%=request.getContextPath()%>/images/qna7.png" onmouseover="this.src='<%=request.getContextPath()%>/images/qna07.png';" onmouseout="this.src='<%=request.getContextPath()%>/images/qna7.png';" alt="마이페이지"/></a>
+         <a href="javascript:btn_vip()"><img src="<%=request.getContextPath()%>/images/qna7.png" onmouseover="this.src='<%=request.getContextPath()%>/images/qna07.png';" onmouseout="this.src='<%=request.getContextPath()%>/images/qna7.png';" alt="마이페이지"/></a>
          <a href="<c:url value="/board_list/${6}" />"><img src="<%=request.getContextPath()%>/images/qna5.png" onmouseover="this.src='<%=request.getContextPath()%>/images/qna05.png';" onmouseout="this.src='<%=request.getContextPath()%>/images/qna5.png';" alt="마이페이지"/></a>
          <a href="<c:url value="/board_list/${7}" />"><img src="<%=request.getContextPath()%>/images/qna6.png" onmouseover="this.src='<%=request.getContextPath()%>/images/qna06.png';" onmouseout="this.src='<%=request.getContextPath()%>/images/qna6.png';" alt="마이페이지"/></a>
          </c:when>
@@ -112,16 +112,16 @@ margin-top:30px;
        	 <a href="<c:url value="/board_list/${2}" />"><img src="<%=request.getContextPath()%>/images/qna2.png" onmouseover="this.src='<%=request.getContextPath()%>/images/qna02.png';" onmouseout="this.src='<%=request.getContextPath()%>/images/qna2.png';" alt="마이페이지"/></a>
        	 <a href="<c:url value="/board_list/${3}" />"><img src="<%=request.getContextPath()%>/images/qna3.png" onmouseover="this.src='<%=request.getContextPath()%>/images/qna03.png';" onmouseout="this.src='<%=request.getContextPath()%>/images/qna3.png';" alt="마이페이지"/></a>
        	 <a href="<c:url value="/board_list/${4}" />"><img src="<%=request.getContextPath()%>/images/qna4.png" onmouseover="this.src='<%=request.getContextPath()%>/images/qna04.png';" onmouseout="this.src='<%=request.getContextPath()%>/images/qna4.png';" alt="마이페이지"/></a>
-         <a href="<c:url value="/board_list/${5}" />"><img src="<%=request.getContextPath()%>/images/qna07.png" onmouseover="this.src='<%=request.getContextPath()%>/images/qna07.png';" onmouseout="this.src='<%=request.getContextPath()%>/images/qna07.png';" alt="마이페이지"/></a>
+         <a href="javascript:btn_vip()"><img src="<%=request.getContextPath()%>/images/qna07.png" onmouseover="this.src='<%=request.getContextPath()%>/images/qna07.png';" onmouseout="this.src='<%=request.getContextPath()%>/images/qna07.png';" alt="마이페이지"/></a>
          <a href="<c:url value="/board_list/${6}" />"><img src="<%=request.getContextPath()%>/images/qna5.png" onmouseover="this.src='<%=request.getContextPath()%>/images/qna05.png';" onmouseout="this.src='<%=request.getContextPath()%>/images/qna5.png';" alt="마이페이지"/></a>
          <a href="<c:url value="/board_list/${7}" />"><img src="<%=request.getContextPath()%>/images/qna6.png" onmouseover="this.src='<%=request.getContextPath()%>/images/qna06.png';" onmouseout="this.src='<%=request.getContextPath()%>/images/qna6.png';" alt="마이페이지"/></a>
          </c:when>
         <c:when test="${num == 6}">
-			<a href="<c:url value="/board_list/${1}" />"><img src="<%=request.getContextPath()%>/images/qna1.png" onmouseover="this.src='<%=request.getContextPath()%>/images/qna01.png';" onmouseout="this.src='<%=request.getContextPath()%>/images/qna1.png';" alt="마이페이지"/></a>
+		 <a href="<c:url value="/board_list/${1}" />"><img src="<%=request.getContextPath()%>/images/qna1.png" onmouseover="this.src='<%=request.getContextPath()%>/images/qna01.png';" onmouseout="this.src='<%=request.getContextPath()%>/images/qna1.png';" alt="마이페이지"/></a>
        	 <a href="<c:url value="/board_list/${2}" />"><img src="<%=request.getContextPath()%>/images/qna2.png" onmouseover="this.src='<%=request.getContextPath()%>/images/qna02.png';" onmouseout="this.src='<%=request.getContextPath()%>/images/qna2.png';" alt="마이페이지"/></a>
        	 <a href="<c:url value="/board_list/${3}" />"><img src="<%=request.getContextPath()%>/images/qna3.png" onmouseover="this.src='<%=request.getContextPath()%>/images/qna03.png';" onmouseout="this.src='<%=request.getContextPath()%>/images/qna3.png';" alt="마이페이지"/></a>
        	 <a href="<c:url value="/board_list/${4}" />"><img src="<%=request.getContextPath()%>/images/qna4.png" onmouseover="this.src='<%=request.getContextPath()%>/images/qna04.png';" onmouseout="this.src='<%=request.getContextPath()%>/images/qna4.png';" alt="마이페이지"/></a>
-         <a href="<c:url value="/board_list/${5}" />"><img src="<%=request.getContextPath()%>/images/qna7.png" onmouseover="this.src='<%=request.getContextPath()%>/images/qna07.png';" onmouseout="this.src='<%=request.getContextPath()%>/images/qna7.png';" alt="마이페이지"/></a>
+         <a href="javascript:btn_vip()"><img src="<%=request.getContextPath()%>/images/qna7.png" onmouseover="this.src='<%=request.getContextPath()%>/images/qna07.png';" onmouseout="this.src='<%=request.getContextPath()%>/images/qna7.png';" alt="마이페이지"/></a>
          <a href="<c:url value="/board_list/${6}" />"><img src="<%=request.getContextPath()%>/images/qna05.png" onmouseover="this.src='<%=request.getContextPath()%>/images/qna05.png';" onmouseout="this.src='<%=request.getContextPath()%>/images/qna05.png';" alt="마이페이지"/></a>
          <a href="<c:url value="/board_list/${7}" />"><img src="<%=request.getContextPath()%>/images/qna6.png" onmouseover="this.src='<%=request.getContextPath()%>/images/qna06.png';" onmouseout="this.src='<%=request.getContextPath()%>/images/qna6.png';" alt="마이페이지"/></a>
          </c:when>
@@ -130,7 +130,7 @@ margin-top:30px;
        	 <a href="<c:url value="/board_list/${2}" />"><img src="<%=request.getContextPath()%>/images/qna2.png" onmouseover="this.src='<%=request.getContextPath()%>/images/qna02.png';" onmouseout="this.src='<%=request.getContextPath()%>/images/qna2.png';" alt="마이페이지"/></a>
        	 <a href="<c:url value="/board_list/${3}" />"><img src="<%=request.getContextPath()%>/images/qna3.png" onmouseover="this.src='<%=request.getContextPath()%>/images/qna03.png';" onmouseout="this.src='<%=request.getContextPath()%>/images/qna3.png';" alt="마이페이지"/></a>
        	 <a href="<c:url value="/board_list/${4}" />"><img src="<%=request.getContextPath()%>/images/qna4.png" onmouseover="this.src='<%=request.getContextPath()%>/images/qna04.png';" onmouseout="this.src='<%=request.getContextPath()%>/images/qna4.png';" alt="마이페이지"/></a>
-         <a href="<c:url value="/board_list/${5}" />"><img src="<%=request.getContextPath()%>/images/qna7.png" onmouseover="this.src='<%=request.getContextPath()%>/images/qna07.png';" onmouseout="this.src='<%=request.getContextPath()%>/images/qna7.png';" alt="마이페이지"/></a>
+         <a href="javascript:btn_vip()"><img src="<%=request.getContextPath()%>/images/qna7.png" onmouseover="this.src='<%=request.getContextPath()%>/images/qna07.png';" onmouseout="this.src='<%=request.getContextPath()%>/images/qna7.png';" alt="마이페이지"/></a>
          <a href="<c:url value="/board_list/${6}" />"><img src="<%=request.getContextPath()%>/images/qna5.png" onmouseover="this.src='<%=request.getContextPath()%>/images/qna05.png';" onmouseout="this.src='<%=request.getContextPath()%>/images/qna5.png';" alt="마이페이지"/></a>
          <a href="<c:url value="/board_list/${7}" />"><img src="<%=request.getContextPath()%>/images/qna06.png" onmouseover="this.src='<%=request.getContextPath()%>/images/qna06.png';" onmouseout="this.src='<%=request.getContextPath()%>/images/qna06.png';" alt="마이페이지"/></a>
          </c:when>
@@ -203,6 +203,12 @@ function btn_write() {
 		location.href = "<%=request.getContextPath()%>/board_write/${num}";
 	}
 }
-
+function btn_vip(){
+	if("${vip}" >= 150000){
+		location.href = "<%=request.getContextPath()%>/board_list/${5}";
+	}else{
+	alert("VIP 회원 전용게시판입니다.");
+	}
+}
 </script>
 </html>

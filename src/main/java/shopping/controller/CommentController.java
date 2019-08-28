@@ -29,7 +29,6 @@ public class CommentController {
 	@RequestMapping(value="/comment/list/", method=RequestMethod.GET)
 	@ResponseBody
 	private List<CommentVO> mCommentServiceList(@RequestParam int bno, Model model) throws Exception {
-
 		return commentService.commentListService(bno);
 	}
 
@@ -37,8 +36,9 @@ public class CommentController {
 	@ResponseBody
 	private int mCommentServiceInsert(@RequestParam int bno, @RequestParam String content, HttpSession session) throws Exception {
 		String id = (String) session.getAttribute("login");
+		System.out.println(id);
 		CommentVO comment = new CommentVO();
-
+		System.out.println("댓글");
 		comment.setBno(bno);
 		comment.setContent(content);
 		// 임시 ID

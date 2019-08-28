@@ -9,10 +9,19 @@ public class MemberVO {
 	private String password;
 	private String name;
 	private String address;
-	private int mobile;
+	private String mobile;
 	private String email;
 	private boolean agree;
 	private int point;
+	private int howmuch;
+	
+	public int getHowmuch() {
+		return howmuch;
+	}
+	public void setHowmuch(int howmuch) {
+		this.howmuch = howmuch;
+	}
+
 	public int getSeq() {
 		return seq;
 	}
@@ -41,7 +50,7 @@ public class MemberVO {
 	private String passwordConfirm;
 	
 	public MemberVO() {}
-	public MemberVO(int seq, String id, String password, String name, String address, int mobile, String email, int birth,int point) {
+	public MemberVO(int seq, String id, String password, String name, String address, String mobile, String email, int birth,int point) {
 		this.seq = seq;
 		this.id = id;
 		this.password = password;
@@ -76,10 +85,11 @@ public class MemberVO {
 	public void setAddress(String address) {
 		this.address = address;
 	}
-	public int getMobile() {
+
+	public String getMobile() {
 		return mobile;
 	}
-	public void setMobile_num(int mobile) {
+	public void setMobile(String mobile) {
 		this.mobile = mobile;
 	}
 	public String getEmail() {

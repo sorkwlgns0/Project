@@ -1,14 +1,25 @@
 package shopping.controller;
 
 
-import javax.servlet.http.HttpServletRequest;
+import java.io.IOException;
+import java.io.PrintWriter;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import javax.validation.Valid;
+
+import org.apache.catalina.Session;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.support.SessionStatus;
 
 import shopping.domain.MemberVO;
 import shopping.service.RegiService;
@@ -21,75 +32,93 @@ public class RegisterController {
 	public void setRegiService(RegiService regiService) {
 		this.regiService = regiService;
 	}
-	@RequestMapping(value="/idCheck", method=RequestMethod.POST)
-		@ResponseBody
-	public int postIdCheck(HttpServletRequest req) {
-
-		System.out.println("아이디 체크 실행");
+	@RequestMapping(value="/register/idCheck", method=RequestMethod.GET)
+	public String postIdCheck(HttpServletRequest req,HttpSession session) {
 		String id = req.getParameter("id");
 		MemberVO idCheck = regiService.idCheck(id);
 		int result = 0;
 		if(idCheck != null) {
 			result = 1;
 		}
-		return result;
+		session.setAttribute("check", result);
+		return "/register/idCheck";
 	}
 
-	@RequestMapping(value="/register/step1", method=RequestMethod.GET)
+	@RequestMapping(value="/register/regi", method=RequestMethod.GET)
 	public String handleStep1() {
-		return "/register/step1";
+		return "/register/regi";
 	}
-	@RequestMapping(value="/register/step1", method=RequestMethod.POST)
+	@RequestMapping(value="/register/regi", method=RequestMethod.POST)
 	public String handleStep2() {
-		return "/register/step1";
+		return "/register/regi";
 	}
-	@RequestMapping(value="/register/step2", method = RequestMethod.GET)
+	@RequestMapping(value="/register/regi2", method = RequestMethod.GET)
 	public String step2(MemberVO memberVO,Model model) {
-		return "/register/regiSuc";
+		return "redirect:/main";
 	}
-	@RequestMapping(value="/register/step2", method = RequestMethod.POST)
+	@RequestMapping(value="/register/regi2", method = RequestMethod.POST)
 	public String handleStep2(MemberVO memberVO,
 			@RequestParam(value="agree", defaultValue="false")Boolean agree,
-	Model model){
+	Model model,HttpServletResponse response)throws IOException{
+		response.setContentType("text/html; charset=UTF-8");
+		PrintWriter out = response.getWriter();
 		if(!agree) {
-			return "/register/step1";
+			
+			out.println("<script>alert('약관에 동의해주세요.'); history.go(-1);</script>");
+	        out.flush();
+			return "/register/regi";
 		}
 		System.out.println("컨트롤러 실행");
+		out.println("<script>alert('회원가입이 완료되었습니다.');</script>");
+        out.flush();
 		regiService.insertMember(memberVO);
-		return "/register/regiSuc";
+		return "/login/login";
 	}
-	@RequestMapping(value="register/regiSuc", method = RequestMethod.GET)
-	public String regiSuc() {
-		return "/register/regiSuc";
+	@RequestMapping(value="/modify/{seq}", method=RequestMethod.GET)
+	public String edit(@PathVariable int seq, Model model) {
+		MemberVO memberVO = regiService.read(seq);
+		model.addAttribute("memberVO", memberVO);
+		return "/board/edit";
 	}
-	/*@RequestMapping(value="/register/step3", method=RequestMethod.POST)
-	public String handleStep3(HttpServletRequest request) {
-		String email = request.getParameter("email");
-		String name = request.getParameter("name");
-		String password= request.getParameter("password");
-		String confirmPassword = request.getParameter("confirmPassword");
-		RegisterRequest regReq = new RegisterRequest();
-				regReq.setEmail(email);
+	
+	@RequestMapping(value="/modify/{seq}", method=RequestMethod.POST)
+	public String edit(
+			@Valid @ModelAttribute MemberVO memberVO,
+			BindingResult result,
+			int password,SessionStatus sessionStatus,
+			HttpSession session,
+			Model model) {
+				regiService.updateMember(memberVO);
+				memberVO.getBirth();
+				sessionStatus.setComplete();
+				session.setAttribute("update", memberVO);	
+				return "redirect:/main";
+		
+	}
+	@RequestMapping(value="/delete/{seq}", method=RequestMethod.GET)
+	public String delete(@PathVariable int seq, Model model) {
+		model.addAttribute("seq", seq);
+		return "/login/delete";
+	}
+	
+	@RequestMapping(value="/delete", method=RequestMethod.POST)
+	public String delete(int seq,String pwd, Model model, HttpSession session) {
+		int rowCount;
+		MemberVO memberVO = new MemberVO();
+		memberVO.setSeq(seq);
+		memberVO.setPassword(pwd);
+		System.out.println(memberVO.getPassword());
+		rowCount = regiService.deleteMem(memberVO);
+		session.invalidate();
+		if(rowCount ==0) {
+			model.addAttribute("seq", seq);
+			model.addAttribute("msg", "비밀번호가 일치하지 않습니다.");
 			
-		return "/register/step3";
-	}
-	private MemberRegisterService memberRegisterService;
-	public void setMemberRegisterService(
-	MemberRegisterService memberRegisterService){
-		this.memberRegisterService = memberRegisterService;
-	}
-	@RequestMapping(value="/register/step3", method=RequestMethod.POST)
-	public String handleStep3(@ModelAttribute("formData")RegisterRequest regReq, Errors errors) {
-		new RegisterRequestValidator().validate(regReq, errors);
-		if(errors.hasErrors()) {
-			return "register/step2";
+			return "/login/delete";
 		}
-		try {
-			memberRegisterService.regist(regReq);
-			return "register/step3";
-		}catch(AlreadyExistingMemberException e) {
-			errors.rejectValue("email", "duplicate");
-			return "register/step2";
+		else {
+		return "redirect:/main";
 		}
-	}*/
+	}
+	
 }

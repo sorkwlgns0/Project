@@ -1,5 +1,9 @@
 package shopping.controller;
 
+import java.io.IOException;
+import java.io.PrintWriter;
+
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
@@ -30,15 +34,28 @@ public class LoginController {
 		return "redirect:/main";
 	}
 	@RequestMapping(value="/login/login", method=RequestMethod.POST)
-	public String login(MemberVO memberVO,HttpSession session) {
+	public String login(MemberVO memberVO,HttpSession session, Model model, HttpServletResponse response) throws IOException {
 		String id = memberVO.getId();
 		String pass = memberVO.getPassword();
-		memberVO = loginService.getId(id);
-		if(id.equals(memberVO.getId()) && pass.equals(memberVO.getPassword())) {
-			session.setAttribute("login", memberVO.getId());			
-			return "/login/loginSuc";
+		MemberVO Check = loginService.getId(id);
+		if(Check == null) {
+			response.setContentType("text/html; charset=UTF-8");
+            PrintWriter out = response.getWriter();
+            out.println("<script>alert('아이디가 없거나 비밀번호가 일치하지 않습니다.'); history.go(-1);</script>");
+            out.flush();
 		}
-		else { return "/login/login";}
+		if(id.equals(Check.getId()) && pass.equals(Check.getPassword())) {
+			session.setAttribute("login", Check.getId());		
+			session.setAttribute("update", Check);
+			return "redirect:/main";
+		}
+		if(id.equals(Check.getId()) && pass != (Check.getPassword())) { 
+			response.setContentType("text/html; charset=UTF-8");
+	        PrintWriter out = response.getWriter();
+	        out.println("<script>alert('아이디가 없거나 비밀번호가 일치하지 않습니다.'); history.go(-1);</script>");
+	        out.flush();
+		}
+		return "/login/login";
 	}
 	@RequestMapping(value="/login/searchID", method=RequestMethod.GET)
 	public String searchID() {
@@ -98,5 +115,32 @@ public class LoginController {
 			String a = null;
 			model.addAttribute("foundPW", a);
 			return "/login/foundPW";}
+	}
+	
+	@RequestMapping(value="/mypage")
+	public String mypage(Model model,HttpSession session, HttpServletResponse response)throws IOException {
+       
+		String id = (String)session.getAttribute("login");
+		System.out.println(id);
+		if(id == null) {
+			response.setContentType("text/html; charset=UTF-8");
+			PrintWriter out = response.getWriter();
+			out.println("<script>alert('로그인을 해주세요.'); history.go(-1);</script>");
+	        out.flush();
+	        return "/login/login";
+		}
+		model.addAttribute("update", loginService.getId(id));
+		return "/mypage";
+	}
+	@RequestMapping(value="/update")
+	public String update(Model model,HttpSession session) {
+		String id = (String)session.getAttribute("login");
+		model.addAttribute("update", loginService.getId(id));
+		return "/login/update";
+	}
+	@RequestMapping(value="/delete")
+	public String delete(Model model,HttpSession session) {
+		MemberVO memberVO = (MemberVO) session.getAttribute("update");
+		return "/login/delete";
 	}
 }
